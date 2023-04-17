@@ -6,3 +6,4 @@
 .gitsecret/keys/random_seed
 !*.secret
 data/wifi.json
+data/config.json

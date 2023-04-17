@@ -4,7 +4,14 @@
 #include "Adafruit_BME280.h"
 
 
+struct SensorData {
+  float temperature;
+  float humidity;
+  float pressure;
+};
+
+
 void setup_BME280();
-void poll_BME280();
+SensorData poll_BME280();
 
 #endif /* BME280_HELPER_H */

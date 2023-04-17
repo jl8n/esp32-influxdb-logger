@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "wifi_connect.h"
-#include "sensor.h"
+#include "BME280_helper.h"
+#include "send_data.h"
 
 
 void setup() {
@@ -8,7 +9,7 @@ void setup() {
   pinMode(2, OUTPUT);
 
   try {
-    std::pair<String, String> config = getWifiCreds("/wifi.json");
+    std::pair<String, String> config = getWifiCreds("/config.json");
     connectToWifi(config.first, config.second);
 
   } catch (const char* error) {
@@ -16,10 +17,12 @@ void setup() {
   }
 
   setup_BME280();
+
 }
 
 
 void loop() {
-  poll_BME280();
-  delay(5000);
+  SensorData data = poll_BME280();
+  sendData(data);
+  delay(1000 * 60 * 5);  // 5 minutes
 }
