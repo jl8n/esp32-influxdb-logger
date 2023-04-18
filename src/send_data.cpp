@@ -1,7 +1,7 @@
 #include <Arduino.h>
+#include <ArduinoJson.h>
 #include "WiFi.h"
 #include "SPIFFS.h"
-#include <ArduinoJson.h>
 #include "ServerInfo.h"
 #include "send_data.h"
 
@@ -72,8 +72,5 @@ void sendData(SensorData data) {
       String line = client.readStringUntil('\r');
       Serial.println(line);
     }
-
-    // Close the connection
-    //client.stop();
   }
 }

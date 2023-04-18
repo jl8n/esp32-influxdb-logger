@@ -1,9 +1,10 @@
 #include "Adafruit_BME280.h"
 #include "BME280_helper.h"
 
-
-
 Adafruit_BME280 bme; // create BME280 object
+
+#define SEALEVELPRESSURE_HPA (1013.25)
+
 
 void setup_BME280() {
   Serial.begin(115200);
@@ -13,6 +14,7 @@ void setup_BME280() {
   }
 }
 
+
 SensorData poll_BME280() {
   float temperature = bme.readTemperature();
   float humidity = bme.readHumidity();
@@ -21,4 +23,9 @@ SensorData poll_BME280() {
   SensorData data = { temperature, humidity, pressure };
 
   return data;
+}
+
+
+float celsiusToFahrenheit(float celsius) {
+  return (celsius * 1.8) + 32;
 }

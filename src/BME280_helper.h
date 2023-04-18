@@ -10,8 +10,10 @@ struct SensorData {
   float pressure;
 };
 
-
 void setup_BME280();
 SensorData poll_BME280();
+float celsiusToFahrenheit(float celsius);
+float pressureToAltitude(float airPressure);
+
 
 #endif /* BME280_HELPER_H */

@@ -5,8 +5,10 @@
 #include "ServerInfo.h"
 #include "BME280_helper.h"
 
+
 ServerInfo getServerInfo(const char* filename);
 String constructJsonBody(SensorData data);
 void sendData(SensorData data);
+
 
 #endif /* SEND_DATA_H */
